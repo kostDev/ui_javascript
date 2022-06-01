@@ -1,0 +1,45 @@
+body {
+  margin: 0;
+  padding: 0;
+
+  width: 100vw;
+  height: 100vh;
+
+  background: #1b1b1b;
+  background-image: linear-gradient(
+      rgba(101, 96, 102, 0.2) 0.1em,
+      transparent 0.1em
+    ),
+    linear-gradient(90deg, rgba(31, 143, 177, 0.2) 0.1em, transparent 0.1em);
+  background-size: 32px 32px;
+}
+
+.App {
+  font-family: sans-serif;
+}
+
+.rightBlock {
+  /* position: absolute; */
+  right: 0;
+  min-width: 300px;
+  height: 100vh;
+  z-index: 9999;
+}
+
+.dashboard {
+  border: 2px solid #03a9f442;
+}
+
+.accordion-button:focus {
+  box-shadow: none;
+  border-color: rgba(0, 0, 0, 0.125);
+}
+
+button:focus {
+  box-shadow: none !important;
+  border-color: rgba(0, 0, 0, 0.125);
+}
+
+.c-pointer:nth-child(n) {
+  cursor: pointer;
+}
