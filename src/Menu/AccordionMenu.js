@@ -4,7 +4,7 @@ import {
   VariablesSection,
   ObjectSection,
   TemplatesSection,
-  DEFAULT_ACTIVE_KEY_VARIABLE
+  DEFAULT_ACTIVE_KEY_VARIABLE,
 } from "../consts";
 
 function RenderAccordionSection(data, setElement) {

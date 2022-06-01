@@ -6,35 +6,35 @@ export const VariablesMenuList = [
   {
     name: "Number",
     uiClass: "list-group-item-success",
-    settings: VariableSettings.Number
+    // settings: VariableSettings.Number,
   },
   {
     name: "String",
     uiClass: "list-group-item-warning",
-    settings: VariableSettings.String
+    // settings: VariableSettings.String,
   },
   {
     name: "Boolean",
     uiClass: "list-group-item-primary",
-    settings: VariableSettings.Boolean
+    // settings: VariableSettings.Boolean,
   },
   {
     name: "Null",
     uiClass: "list-group-item-secondary",
-    settings: VariableSettings.Null
+    // settings: VariableSettings.Null,
   },
   {
     name: "Undefined",
     uiClass: "list-group-item-secondary",
-    settings: VariableSettings.Undefined
-  }
+    // settings: VariableSettings.Undefined,
+  },
 ];
 
 export const ObjectsMenuList = [
   { name: "Function", uiClass: "list-group-item-primary" },
   { name: "Array", uiClass: "list-group-item-success" },
   { name: "Object", uiClass: "list-group-item-warning" },
-  { name: "Class", uiClass: "list-group-item-info" }
+  { name: "Class", uiClass: "list-group-item-info" },
 ];
 
 export const DefaultTemplatesMenuList = [
@@ -42,7 +42,7 @@ export const DefaultTemplatesMenuList = [
   { name: "Anonymous Function", uiClass: "list-group-item-primary" },
   { name: "Array", uiClass: "list-group-item-success" },
   { name: "Object", uiClass: "list-group-item-warning" },
-  { name: "Class", uiClass: "list-group-item-info" }
+  { name: "Class", uiClass: "list-group-item-info" },
 ];
 
 // ACCORDION SECTIONS
@@ -52,7 +52,7 @@ export const VariablesSection = {
   title: "Variable",
   subTitle: "Primitives",
   createNew: false,
-  list: VariablesMenuList
+  list: VariablesMenuList,
 };
 
 export const ObjectSection = {
@@ -60,7 +60,7 @@ export const ObjectSection = {
   title: "Object",
   subTitle: "References",
   createNew: false,
-  list: ObjectsMenuList
+  list: ObjectsMenuList,
 };
 
 export const TemplatesSection = {
@@ -68,7 +68,7 @@ export const TemplatesSection = {
   title: "Templates",
   subTitle: "*",
   createNew: true,
-  list: DefaultTemplatesMenuList
+  list: DefaultTemplatesMenuList,
 };
 
 export default { VariablesMenuList, ObjectsMenuList };

@@ -1,14 +1,15 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Container } from "react-bootstrap";
-import { DefaultContext } from "../Context";
 import AccordionMenu from "./AccordionMenu";
 import CurrentTarget from "./CurrentTarget";
+import { addItem } from "../Store/Actions";
 
 function Menu() {
   const [target, setTarget] = useState({});
-  const { items } = useContext(DefaultContext);
+  const dispatch = useDispatch();
   const setCurrentTarget = (el) => {
-    items.push(el);
+    dispatch(addItem(el));
     setTarget(el);
   };
   return (
