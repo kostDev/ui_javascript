@@ -12,7 +12,7 @@ function CreateButtons(totalScreens, currentScreen, setCurrentScreen) {
         className={uiActive}
         onClick={() => setCurrentScreen(i)}
       >
-        {i + 1}
+        Screen {i + 1}
       </Button>
     );
   }
@@ -21,18 +21,12 @@ function CreateButtons(totalScreens, currentScreen, setCurrentScreen) {
 
 function TopPanel() {
   const dispatch = useDispatch();
-  const { currentScreen, totalScreens, MAX_SCREENS } = useSelector((state) => ({
+  const { currentScreen, totalScreens} = useSelector((state) => ({
     currentScreen: state.currentScreen,
     totalScreens: state.totalScreens,
-    MAX_SCREENS: state.maxScreens,
   }));
-
-  console.log(currentScreen, totalScreens, MAX_SCREENS);
-
-  const addMore = () => {
-    if (totalScreens + 1 <= MAX_SCREENS) dispatch(addScreen());
-  };
-
+  // console.log(currentScreen, totalScreens);
+  const addMore = () => dispatch(addScreen())
   const onClickScreenTab = (index) => dispatch(setCurrentScreen(index));
 
   return (

@@ -1,17 +1,13 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import { Container } from "react-bootstrap";
 import AccordionMenu from "./AccordionMenu";
 import CurrentTarget from "./CurrentTarget";
 import { addItem } from "../Store/Actions";
 
 function Menu() {
-  const [target, setTarget] = useState({});
+  const target = useSelector(state => state.currentTarget)
   const dispatch = useDispatch();
-  const setCurrentTarget = (el) => {
-    dispatch(addItem(el));
-    setTarget(el);
-  };
+  const setCurrentTarget = (el) => dispatch(addItem(el));
   return (
     <Container className="bg-white rightBlock right w-25 vh-100 overflow-auto">
       <h2 className="text-center">UI Elements</h2>
