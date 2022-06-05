@@ -1,51 +1,53 @@
 import { configureStore } from "@reduxjs/toolkit";
 import produce from "immer";
 
-import {
-  ITEM_ADD_ACTION,
-  SCREEN_ADD_ACTION,
-  SCREEN_SET_CURRENT_INDEX,
-  TARGET_ADD_ACTION,
-} from "./Actions";
+import { EDITOR_SET_THEME, EDITOR_SET_CODE } from "./Actions";
+import html from "../templates/html";
+import css from "../templates/css";
+import javascript from "../templates/javascript";
 
-const InitialState = {
-  idCounter: 0,
-  currentScreen: 0,
-  totalScreens: 1,
-  maxScreens: 6,
-  screensData: { 0: [] },
-  currentTarget: null
+const templates = {
+  htmlmixed: html,
+  css,
+  javascript,
 };
 
-const reducer = produce((draftState = InitialState, { type, payload }) => {
+const InitialState = {
+  themes: [
+    "dracula",
+    "seti",
+    "material-darker",
+    "material-ocean",
+    "panda-syntax",
+    "mbo",
+    "neo",
+    "mdn-like",
+  ],
+  theme: "material-darker",
+  code: { ...templates },
+  templates,
+};
+
+const rootReducer = produce((draftState = InitialState, { type, payload }) => {
   switch (type) {
-    case TARGET_ADD_ACTION:
-      draftState.currentTarget = null;
-      draftState.currentTarget = payload.target;
+    case EDITOR_SET_THEME:
+      draftState.theme = payload.theme;
       return draftState;
-    case ITEM_ADD_ACTION:
-      const id = draftState.currentScreen;
-      draftState.idCounter +=1
-      const item = { ...payload.item, id: draftState.idCounter };
-      draftState.currentTarget = item;
-      draftState.screensData[id].push(item);
-      return draftState;
-    case SCREEN_ADD_ACTION:
-      const nextId = draftState.totalScreens;
-      if(draftState.totalScreens+1 <= draftState.maxScreens) {
-        draftState.totalScreens += 1;
-        draftState.screensData[nextId] = [];
-      }
-      return draftState;
-    case SCREEN_SET_CURRENT_INDEX:
-      draftState.currentTarget = null;
-      draftState.currentScreen = payload.index;
+    case EDITOR_SET_CODE:
+      const { code, mode } = payload;
+      draftState.code[mode] = code;
       return draftState;
     default:
       return draftState;
   }
 });
 
-const Store = configureStore({ reducer });
+const Store = configureStore({
+  reducer: rootReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
+});
 
 export default Store;

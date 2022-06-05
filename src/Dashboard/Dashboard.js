@@ -1,14 +1,6 @@
 import { Container } from "react-bootstrap";
-import TopPanel from "./TopPanel";
-import Elements from "./Elements";
-
 function Dashboard() {
-  return (
-    <Container className="dashboard vh-100 w-75">
-      <TopPanel />
-      <Elements />
-    </Container>
-  );
+  return <Container className="vh-100 p-0" fluid></Container>;
 }
 
 export default Dashboard;
