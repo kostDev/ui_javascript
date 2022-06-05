@@ -2,4 +2,4 @@
 Lite Editor for creating UI and generate it to js.
 
 ## **DEMO:**
-![Web Editor look](./screenshot/pic1.png)
+![Web Editor look](./screenshot/pic.png)

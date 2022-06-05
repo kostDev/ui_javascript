@@ -4,4 +4,5 @@
 .idea/workspace.xml
 .codesandbox
 node_modules
+build
 yarn.lock
