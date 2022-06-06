@@ -17,7 +17,7 @@ const InitialState = {
   theme: "material-darker",
 
   layouts: LAYOUTS,
-  layoutType: "4-Columns",
+  layoutType: "JS-Only",
 
   templates: TEMPLATES,
   template: { ...TEMPLATES.default },
