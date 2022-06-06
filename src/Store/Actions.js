@@ -4,7 +4,8 @@ export const EDITOR_SET_CODE = "EDITOR_SET_CODE";
 export const EDITOR_RUN_CODE_STATUS = "EDITOR_RUN_CODE_STATUS";
 export const EDITOR_STOP_CODE_STATUS = "EDITOR_STOP_CODE_STATUS";
 export const EDITOR_REFRESH_CODE_STATUS = "EDITOR_REFRESH_CODE_STATUS";
-// SCREEN
+// LAYOUT
+export const LAYOUT_SET = "LAYOUT_SET";
 
 // TARGET
 
@@ -29,4 +30,9 @@ export const stopCodeStatus = () => ({
 
 export const refreshCodeStatus = () => ({
   type: EDITOR_REFRESH_CODE_STATUS,
+});
+
+export const setLayout = (layout) => ({
+  type: LAYOUT_SET,
+  payload: { layout },
 });

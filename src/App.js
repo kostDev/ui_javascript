@@ -19,6 +19,7 @@ import "codemirror/theme/mbo.css";
 
 import Layout from "./Layouts/Layout";
 import EditorThemeChanger from "./Editor/EditorThemeChanger";
+import LayoutChanger from "./Layouts/LayoutChanger";
 
 const receiveConsole = ({ data }) => {
   const { args, type } = data;
@@ -34,7 +35,8 @@ export default function App() {
 
   return (
     <Container className="App vh-100" fluid>
-      <header className="row justify-content-end p-1 bg-dark text-white border-bottom border-secondary">
+      <header className="row justify-content-between p-1 bg-dark text-white border-bottom border-secondary">
+        <LayoutChanger />
         <EditorThemeChanger />
       </header>
       {/*<Menu />*/}

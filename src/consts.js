@@ -13,7 +13,7 @@ export const THEMES = [
   "mdn-like",
 ];
 
-export const LAYOUTS = ["4-Columns"];
+export const LAYOUTS = ["4-Columns", "JS-Only"];
 
 export const TEMPLATES = {
   default: {

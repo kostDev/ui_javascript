@@ -1,27 +1,34 @@
 import { memo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setTheme } from "../Store/Actions";
-import { Form } from "react-bootstrap";
+import { Dropdown } from "react-bootstrap";
 
 function EditorThemeChanger() {
   const dispatch = useDispatch();
   const themes = useSelector((state) => state.themes);
   const theme = useSelector((state) => state.theme);
-  const updateTheme = ({ target }) => dispatch(setTheme(target.value));
+  const updateTheme = (value) => dispatch(setTheme(value));
   //position-absolute top-0 end-0
   return (
-    <Form.Select
-      className="w-auto p-1 bg-dark text-white opacity-50 border-0 empty-focus"
-      aria-label="theme variable"
-      defaultValue={theme}
-      onChange={updateTheme}
-    >
-      {themes.map((name) => (
-        <option key={name} value={name}>
-          {name}
-        </option>
-      ))}
-    </Form.Select>
+    <Dropdown className="w-auto">
+      <Dropdown.Toggle
+        variant="outline-secondary"
+        className="bg-none empty-focus border-0"
+      >
+        theme: {theme}
+      </Dropdown.Toggle>
+      <Dropdown.Menu variant="dark">
+        {themes.map((themeName) => (
+          <Dropdown.Item
+            key={"theme-" + themeName}
+            active={themeName === theme}
+            onClick={() => updateTheme(themeName)}
+          >
+            {themeName}
+          </Dropdown.Item>
+        ))}
+      </Dropdown.Menu>
+    </Dropdown>
   );
 }
 

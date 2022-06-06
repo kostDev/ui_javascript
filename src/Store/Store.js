@@ -7,6 +7,7 @@ import {
   EDITOR_RUN_CODE_STATUS,
   EDITOR_STOP_CODE_STATUS,
   EDITOR_REFRESH_CODE_STATUS,
+  LAYOUT_SET,
 } from "./Actions";
 
 import { LAYOUTS, TEMPLATES, THEMES } from "../consts";
@@ -16,7 +17,7 @@ const InitialState = {
   theme: "material-darker",
 
   layouts: LAYOUTS,
-  layoutType: "4-columns",
+  layoutType: "4-Columns",
 
   templates: TEMPLATES,
   template: { ...TEMPLATES.default },
@@ -50,6 +51,11 @@ const rootReducer = produce((draftState = InitialState, { type, payload }) => {
     case EDITOR_STOP_CODE_STATUS:
       draftState.isCodeRun = false;
       draftState.statusCode = "stop";
+      return draftState;
+    case LAYOUT_SET:
+      draftState.isCodeRun = false;
+      draftState.statusCode = "stop";
+      draftState.layoutType = payload.layout;
       return draftState;
     default:
       return draftState;
