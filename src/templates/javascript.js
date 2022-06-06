@@ -1,9 +1,7 @@
 const javascript = `/*     WELCOME TO LITE EDITOR      */
 const str = 'Hello Coder';
-const p = document.getElementById('text');
 
 function sayHello() {
-  p.innerText = str
   console.log(str);
 }
 
