@@ -42,11 +42,11 @@ function useCodeProcess(iframeRef) {
 
   const stopCode = () => {
     const iframe = iframeRef?.current;
-    const consoleUI = document.getElementById('consoleUI');
+    const consoleUI = document.getElementById("consoleUI");
     if (iframe) {
       iframe.srcdoc = "";
     }
-    if(consoleUI) {
+    if (consoleUI) {
       consoleUI.innerHTML = null;
     }
     // if(iframe?.contentWindow) iframe.contentWindow.console.clear();

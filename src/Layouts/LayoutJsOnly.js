@@ -25,7 +25,10 @@ function LayoutJsOnly({ frameRef }) {
               height="100%"
             ></iframe>
           </div>
-          <div className="position-absolute bg-dark w-100 h-100 top-0 overflow-auto" id="consoleUI"></div>
+          <div
+            className="position-absolute bg-dark w-100 h-100 top-0 overflow-auto"
+            id="consoleUI"
+          ></div>
         </Col>
         <Col
           className="position-relative bg-dark h-100 p-0 border-dark border-top"
