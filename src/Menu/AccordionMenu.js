@@ -27,7 +27,7 @@ function RenderAccordionSection(data, setElement) {
         <span className="ps-1 opacity-25">{subTitle}</span>
       </Accordion.Header>
       <Accordion.Body>
-        <ul className="list-group c-pointer">
+        <ul className="list-group">
           {createNew && (
             <Button className="btn-warning list-group-item-warning mb-2">
               Create New

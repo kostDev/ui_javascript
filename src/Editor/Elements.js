@@ -6,9 +6,7 @@ function Block({ element, setTarget, isActive }) {
   return (
     <Alert
       id={element.idElement}
-      className={
-        "d-flex position-absolut w-25 c-pointer border-3 " + isActive(element)
-      }
+      className={"d-flex position-absolut w-25 border-3 " + isActive(element)}
       variant={element.variant}
       onClick={() => setTarget(element)}
     >

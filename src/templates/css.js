@@ -1,6 +1,6 @@
 const css = `/* -= CSS HERE =- */
 body {
-  background-color: white;
+  background-color: black;
   margin: 0;
   padding: 0;
   width: 100vw;
@@ -10,13 +10,12 @@ body {
 #app {
   background-color: rosybrown;
   border-radius: 4px;
-  box-shadow: -2px 3px 5px 1px #e0e0e0;
   margin: 25% auto;
   width: 100px;
   height: 100px;
 }
 
-.text {
+#text {
   color: white;
   float: inline-start;
   text-align: center;

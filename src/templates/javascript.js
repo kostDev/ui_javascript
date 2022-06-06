@@ -1,11 +1,22 @@
 const javascript = `/*     WELCOME TO LITE EDITOR      */
-const text = "Hello coder";
+const str = 'Hello Coder';
+const p = document.getElementById('text');
 
-function run() {
-  console.log(text);
+function sayHello() {
+  p.innerText = str
+  console.log(str);
 }
 
-run();
+sayHello();
 `;
+
+export let trackingConsole = `
+(function() {
+  const _myConsole = window.console.log;
+  window.console.log = (...args) => {
+    _myConsole(...args);
+    window.top.postMessage({ args, type: 'log' }, '*');
+  }
+})()`;
 
 export default javascript;

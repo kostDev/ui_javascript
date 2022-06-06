@@ -6,7 +6,7 @@ const html = `<!DOCTYPE html>
 </head>
 <body>
   <div id="app">
-    <p class="text">Hello Coder</p>
+    <p id="text"></p>
   </div>
 </body>
 </html>

@@ -1,31 +1,29 @@
 import { configureStore } from "@reduxjs/toolkit";
 import produce from "immer";
 
-import { EDITOR_SET_THEME, EDITOR_SET_CODE } from "./Actions";
-import html from "../templates/html";
-import css from "../templates/css";
-import javascript from "../templates/javascript";
+import {
+  EDITOR_SET_THEME,
+  EDITOR_SET_CODE,
+  EDITOR_RUN_CODE_STATUS,
+  EDITOR_STOP_CODE_STATUS,
+  EDITOR_REFRESH_CODE_STATUS,
+} from "./Actions";
 
-const templates = {
-  htmlmixed: html,
-  css,
-  javascript,
-};
+import { LAYOUTS, TEMPLATES, THEMES } from "../consts";
 
 const InitialState = {
-  themes: [
-    "dracula",
-    "seti",
-    "material-darker",
-    "material-ocean",
-    "panda-syntax",
-    "mbo",
-    "neo",
-    "mdn-like",
-  ],
+  themes: THEMES,
   theme: "material-darker",
-  code: { ...templates },
-  templates,
+
+  layouts: LAYOUTS,
+  layoutType: "4-columns",
+
+  templates: TEMPLATES,
+  template: { ...TEMPLATES.default },
+
+  code: {}, // ...TEMPLATES.default ,
+  statusCode: "stop",
+  isCodeRun: false,
 };
 
 const rootReducer = produce((draftState = InitialState, { type, payload }) => {
@@ -36,6 +34,22 @@ const rootReducer = produce((draftState = InitialState, { type, payload }) => {
     case EDITOR_SET_CODE:
       const { code, mode } = payload;
       draftState.code[mode] = code;
+      return draftState;
+    case EDITOR_RUN_CODE_STATUS:
+      draftState.isCodeRun = true;
+      if (draftState.statusCode === "run") {
+        draftState.statusCode = "refresh";
+      } else {
+        draftState.statusCode = "run";
+      }
+      return draftState;
+    case EDITOR_REFRESH_CODE_STATUS:
+      draftState.isCodeRun = true;
+      draftState.statusCode = "refresh";
+      return draftState;
+    case EDITOR_STOP_CODE_STATUS:
+      draftState.isCodeRun = false;
+      draftState.statusCode = "stop";
       return draftState;
     default:
       return draftState;
@@ -48,6 +62,7 @@ const Store = configureStore({
     getDefaultMiddleware({
       serializableCheck: false,
     }),
+  devTools: process.env.NODE_ENV !== "production",
 });
 
 export default Store;
