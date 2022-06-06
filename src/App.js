@@ -21,7 +21,7 @@ import Layout from "./Layouts/Layout";
 import EditorThemeChanger from "./Editor/EditorThemeChanger";
 import LayoutChanger from "./Layouts/LayoutChanger";
 
-import "./utils/prittyObject";
+import prittyObject from "./utils/prittyObject";
 
 const receiveConsole = ({ data }) => {
   const { args, type } = data;
@@ -29,7 +29,7 @@ const receiveConsole = ({ data }) => {
     const consoleUi = document.getElementById("consoleUI");
     if (consoleUi) {
       const div = document.createElement("div");
-      div.innerHTML = `<pre>${args.prettyPrint()}</pre>`;
+      div.innerHTML = `<pre>${prittyObject(args)}</pre>`;
       div.innerHTML += `<br/><span class="position-absolute bg-secondary w-100 end-0 p-2 text-white">${new Date().toLocaleTimeString()}</span>`;
       div.classList.add(
         "alert",

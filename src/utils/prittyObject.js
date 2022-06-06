@@ -1,4 +1,4 @@
-Object.prototype.prettyPrint = function () {
+const prittyObject = function (val) {
   let jsonLine = /^( *)("[\w]+": )?("[^"]*"|[\w.+-]*)?([,[{])?$/gm;
   let replacer = function (match, pIndent, pKey, pVal, pEnd) {
     let key = '<span class="json-key" style="color: brown">',
@@ -10,10 +10,12 @@ Object.prototype.prettyPrint = function () {
     return r + (pEnd || "");
   };
 
-  return JSON.stringify(this, null, 3)
+  return JSON.stringify(val, null, 3)
     .replace(/&/g, "&amp;")
     .replace(/\\"/g, "&quot;")
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
     .replace(jsonLine, replacer);
 };
+
+export default prittyObject;
