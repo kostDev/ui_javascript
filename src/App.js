@@ -1,12 +1,17 @@
 import { useEffect } from "react";
 import { Container } from "react-bootstrap";
 
+// import "codemirror/mode/htmlembedded/htmlembedded";
 import "codemirror/mode/javascript/javascript.js";
 import "codemirror/mode/htmlmixed/htmlmixed";
-// import "codemirror/mode/htmlembedded/htmlembedded";
+
 import "codemirror/keymap/sublime";
-import "codemirror/addon/display/autorefresh";
+
+import "codemirror/addon/edit/closebrackets";
+import "codemirror/addon/edit/closetag";
 import "codemirror/addon/comment/comment";
+import "codemirror/addon/selection/active-line";
+
 import "codemirror/lib/codemirror.css";
 import "codemirror/theme/dracula.css";
 import "codemirror/theme/neo.css";
@@ -34,7 +39,6 @@ export default function App() {
         <LayoutChanger />
         <EditorThemeChanger />
       </header>
-      {/*<Menu />*/}
       <Layout />
     </Container>
   );

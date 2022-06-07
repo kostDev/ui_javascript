@@ -30,6 +30,7 @@ const InitialState = {
 const rootReducer = produce((draftState = InitialState, { type, payload }) => {
   switch (type) {
     case EDITOR_SET_THEME:
+      localStorage.setItem("theme", payload.theme);
       draftState.theme = payload.theme;
       return draftState;
     case EDITOR_SET_CODE:
@@ -55,6 +56,7 @@ const rootReducer = produce((draftState = InitialState, { type, payload }) => {
     case LAYOUT_SET:
       draftState.isCodeRun = false;
       draftState.statusCode = "stop";
+      localStorage.setItem("layoutType", payload.layout);
       draftState.layoutType = payload.layout;
       return draftState;
     default:
@@ -68,6 +70,11 @@ const Store = configureStore({
     getDefaultMiddleware({
       serializableCheck: false,
     }),
+  preloadedState: {
+    ...InitialState,
+    theme: localStorage.getItem("theme") || InitialState.theme,
+    layoutType: localStorage.getItem("layoutType") || InitialState.layoutType,
+  },
   devTools: process.env.NODE_ENV !== "production",
 });
 

@@ -1,6 +1,6 @@
 import { memo, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Controlled as CodeMirror } from "react-codemirror2";
+import { UnControlled as ControlledEditor } from "react-codemirror2";
 import { setCode } from "../Store/Actions";
 
 function Editor({ mode }) {
@@ -10,7 +10,11 @@ function Editor({ mode }) {
   const template = useSelector((state) => state.template[mode]);
   const [tempCode, setTempCode] = useState(template);
 
-  const saveCode = (editor, _, value) => setTempCode(value);
+  const saveCode = (editor, _, value) => {
+    setTempCode(value);
+  };
+  const onFocus = (editor) => editor.setOption("styleActiveLine", true);
+  const onBlur = (editor) => editor.setOption("styleActiveLine", false);
 
   useEffect(() => {
     if (statusCode === "run" || statusCode === "refresh") {
@@ -18,27 +22,35 @@ function Editor({ mode }) {
     }
   }, [statusCode]);
 
+  useEffect(() => {
+    //console.log('save', mode);
+    setTempCode(tempCode);
+  }, [template]);
+
   return (
-    <CodeMirror
+    <ControlledEditor
       className="h-100 w-100"
-      value={tempCode}
+      value={template}
+      autoCursor={false}
       options={{
         theme,
-        tabSize: 2,
-        indentUnit: 2,
-        mode,
         height: "100%",
-        autoCloseBrackets: true,
+        tabSize: 2,
+        mode,
         showCursorWhenSelecting: true,
-        styleActiveLine: true,
-        smartIndent: true,
+        styleActiveLine: false,
         lineNumbers: true,
         indentWithTabs: true,
-        lineWrapping: true,
+        // lineWrapping: true,
         keyMap: "sublime",
+        matchBrackets: false,
+        autoCloseTags: true,
+        autoCloseBrackets: true,
       }}
-      onBeforeChange={saveCode}
-      // onChange={saveCode}
+      // onBeforeChange={saveCode}
+      onChange={saveCode}
+      onFocus={onFocus}
+      onBlur={onBlur}
     />
   );
 }

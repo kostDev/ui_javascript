@@ -10,9 +10,9 @@ const receiveConsole = ({ data }) => {
       const consoleOutput = consoleUi.children;
       const div = document.createElement("div");
 
-      for (const el of consoleOutput) {
-        el.classList.add("opacity-25");
-      }
+      // for (const el of consoleOutput) {
+      //   el.classList.add("opacity-25");
+      // }
       // clear old log
       if (consoleOutput.length > maxConsoleOutput) {
         const removeVal = consoleOutput.length - maxConsoleOutput;
