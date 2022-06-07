@@ -21,29 +21,7 @@ import Layout from "./Layouts/Layout";
 import EditorThemeChanger from "./Editor/EditorThemeChanger";
 import LayoutChanger from "./Layouts/LayoutChanger";
 
-import prittyObject from "./utils/prittyObject";
-
-const receiveConsole = ({ data }) => {
-  const { args, type } = data;
-  if (type && args) {
-    const consoleUi = document.getElementById("consoleUI");
-    if (consoleUi) {
-      const div = document.createElement("div");
-      div.innerHTML = `<pre>${prittyObject(args)}</pre>`;
-      div.innerHTML += `<br/><span class="position-absolute bg-secondary w-100 end-0 p-2 text-white">${new Date().toLocaleTimeString()}</span>`;
-      div.classList.add(
-        "alert",
-        "alert-dark",
-        "text-error",
-        "border-top",
-        "border-dark",
-        "position-relative"
-      );
-      consoleUi.prepend(div);
-      // console.log('here', args, type)
-    }
-  }
-};
+import receiveConsole from "./utils/receiveConsole";
 
 export default function App() {
   useEffect(() => {

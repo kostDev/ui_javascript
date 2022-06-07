@@ -62,7 +62,10 @@ pre {
   padding: 10px 20px;
   margin: 20px;
   border-radius: 4px;
-  /*width: 25%;*/
   margin-left: auto;
   margin-right: auto;
+}
+
+#consoleUI {
+  background-color: #d3d3d4;
 }

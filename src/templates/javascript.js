@@ -11,8 +11,8 @@ sayHello();
 export let trackingConsole = `
 (function() {
   const _myConsole = window.console.log;
-  window.console.log = (args) => {
-    _myConsole(args);
+  window.console.log = (...args) => {
+    _myConsole(...args);
     window.top.postMessage({ args, type: 'log' }, '*');
   }
 })()`;

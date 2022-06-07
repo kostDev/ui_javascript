@@ -26,7 +26,7 @@ function LayoutJsOnly({ frameRef }) {
             ></iframe>
           </div>
           <div
-            className="position-absolute bg-dark w-100 h-100 top-0 overflow-auto"
+            className="position-absolute w-100 h-100 top-0 px-3 pt-3 pb-5 overflow-auto"
             id="consoleUI"
           ></div>
         </Col>
