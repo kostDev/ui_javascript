@@ -15,4 +15,21 @@ const html = `<!DOCTYPE html>
 </body>
 </html>
 `;
+
+export const htmlP5 = `<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.min.js"></script>
+    <meta charset="utf-8" />
+    <title>Lite Page</title>
+    <!-- YOUR STYLES RUN HERE   -->
+    <!-- ADD MORE LIBS HERE   -->
+  </head>
+  <body>
+    <main>
+    </main>
+    <!-- YOUR JS CODE RUN HERE   -->
+  </body>
+</html>`;
+
 export default html;

@@ -8,23 +8,22 @@ import stopIcon from "../icons/stop.svg";
 
 import { useDispatch, useSelector } from "react-redux";
 import { runCodeStatus, stopCodeStatus } from "../Store/Actions";
+import { useState } from "react";
 
-function LayoutFourColumns({ frameRef }) {
+function LayoutP5({ frameRef }) {
   const dispatch = useDispatch();
   const runCode = () => dispatch(runCodeStatus());
   const stopCode = () => dispatch(stopCodeStatus());
   const isRun = useSelector((state) => state.isCodeRun);
+  const [isBottomHtml, setBottomHtml] = useState(true);
 
   return (
     <>
-      <Row className="vw-100 h-95">
+      <Row className="vw-100 h-95 overflow-hidden">
         <Col
-          className=" h-50 position-relative bg-dark p-0 border-dark border-end border-bottom"
+          className=" h-100 position-relative bg-dark p-0 border-dark border-end border-bottom"
           md={6}
         >
-          <Editor mode="htmlmixed" />
-        </Col>
-        <Col className="h-50 position-relative bg-white p-0" md={6}>
           <div className="text-dark w-100 h-100" id="runDemo">
             <iframe
               ref={frameRef}
@@ -43,11 +42,8 @@ function LayoutFourColumns({ frameRef }) {
             />
           )}
         </Col>
-        <Col className="h-50  bg-info p-0 border-dark border-end" md={6}>
-          <Editor mode="css" />
-        </Col>
         <Col
-          className="h-50 position-relative bg-dark p-0 border-dark border-top"
+          className="h-50 position-relative bg-white p-0 align-self-start"
           md={6}
         >
           <Editor mode="javascript" />
@@ -64,12 +60,44 @@ function LayoutFourColumns({ frameRef }) {
               </span>
             )}
           </div>
+          <Col
+            className="h-100 w-100 position-relative bg-dark p-0 border-dark border-top col-auto"
+            md={6}
+          >
+            <Editor mode={isBottomHtml ? "htmlmixed" : "css"} />
+            <div className="position-absolute p-1 top-0 end-0">
+              <div
+                className="btn-group"
+                role="group"
+                aria-label="Basic outlined example"
+              >
+                <button
+                  className={
+                    "btn btn-outline-secondary empty-focus " +
+                    (isBottomHtml && "active")
+                  }
+                  onClick={() => setBottomHtml(true)}
+                >
+                  html
+                </button>
+                <button
+                  className={
+                    "btn btn-outline-secondary empty-focus " +
+                    (!isBottomHtml && "active")
+                  }
+                  onClick={() => setBottomHtml(false)}
+                >
+                  css
+                </button>
+              </div>
+            </div>
+          </Col>
         </Col>
       </Row>
     </>
   );
 }
 
-LayoutFourColumns.type = "4-Columns";
+LayoutP5.type = "p5";
 
-export default LayoutFourColumns;
+export default LayoutP5;

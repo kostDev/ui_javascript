@@ -40,4 +40,15 @@ export let trackingConsole = `
 }
 })()`;
 
+export const jsP5 = `/* with LOVE for p5 */
+
+function setup() {
+  createCanvas(400,400);
+}
+
+function draw() {
+  background(54);
+}
+`;
+
 export default javascript;

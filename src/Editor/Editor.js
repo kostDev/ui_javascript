@@ -7,7 +7,7 @@ function Editor({ mode }) {
   const dispatch = useDispatch();
   const theme = useSelector((state) => state.theme);
   const statusCode = useSelector((state) => state.statusCode);
-  const template = useSelector((state) => state.template[mode]);
+  const template = useSelector((state) => state.code[mode]);
   const [tempCode, setTempCode] = useState(template);
 
   const saveCode = (editor, _, value) => {

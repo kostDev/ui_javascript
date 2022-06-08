@@ -41,6 +41,9 @@ body {
 .bg-54 {
   background: #545454;
 }
+.c-pointer {
+  cursor: pointer;
+}
 
 .code-error {
   color: red;

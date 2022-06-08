@@ -40,6 +40,8 @@ const preloadState = () => {
     theme,
     layoutType,
     template: { ...TEMPLATES[layoutType] },
+    // for temp changes
+    code: { ...TEMPLATES[layoutType] },
   };
 };
 
@@ -76,6 +78,7 @@ const rootReducer = produce((draftState = InitialState, { type, payload }) => {
       localStorage.setItem("layoutType", layout);
       draftState.layoutType = layout;
       draftState.template = { ...draftState.templates[layout] };
+      draftState.code = { ...draftState.templates[layout] };
       return draftState;
     default:
       return draftState;

@@ -36,4 +36,17 @@ body {
 }
 `;
 
+export const cssP5 = `html, body {
+  background: black;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+canvas {
+  display: block;
+  margin: 1rem;
+  float: right;
+}`;
+
 export default css;
