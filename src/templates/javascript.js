@@ -8,6 +8,11 @@ function sayHello() {
 sayHello();
 `;
 
+export const jsOnly = `/*
+     WELCOME TO LITE EDITOR  |  MODE: JS-ONLY
+*/
+\nconsole.log("Hello :)");\n`;
+
 export let trackingConsole = `
 (function() {
   const _privateLog = window.console.log;

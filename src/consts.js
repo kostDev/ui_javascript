@@ -1,6 +1,6 @@
 import html from "./templates/html";
 import css from "./templates/css";
-import javascript from "./templates/javascript";
+import javascript, { jsOnly } from "./templates/javascript";
 
 export const THEMES = [
   "dracula",
@@ -44,5 +44,14 @@ export const TEMPLATES = {
     htmlmixed: html,
     css,
     javascript,
+  },
+  "4-Columns": {
+    htmlmixed: html,
+    css,
+    javascript,
+  },
+  "JS-Only": {
+    htmlmixed: html,
+    javascript: jsOnly,
   },
 };

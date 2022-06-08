@@ -20,7 +20,7 @@ const InitialState = {
   layoutType: "4-Columns",
 
   templates: TEMPLATES,
-  template: { ...TEMPLATES.default },
+  template: {},
 
   projects: {},
   project: {},
@@ -28,6 +28,19 @@ const InitialState = {
   code: {}, // ...TEMPLATES.default ,
   statusCode: "stop",
   isCodeRun: false,
+};
+
+const preloadState = () => {
+  const theme = localStorage.getItem("theme") || InitialState.theme;
+  const layoutType =
+    localStorage.getItem("layoutType") || InitialState.layoutType;
+
+  return {
+    ...InitialState,
+    theme,
+    layoutType,
+    template: { ...TEMPLATES[layoutType] },
+  };
 };
 
 const rootReducer = produce((draftState = InitialState, { type, payload }) => {
@@ -59,8 +72,10 @@ const rootReducer = produce((draftState = InitialState, { type, payload }) => {
     case LAYOUT_SET:
       draftState.isCodeRun = false;
       draftState.statusCode = "stop";
-      localStorage.setItem("layoutType", payload.layout);
-      draftState.layoutType = payload.layout;
+      const layout = payload.layout;
+      localStorage.setItem("layoutType", layout);
+      draftState.layoutType = layout;
+      draftState.template = { ...draftState.templates[layout] };
       return draftState;
     default:
       return draftState;
@@ -73,11 +88,7 @@ const Store = configureStore({
     getDefaultMiddleware({
       serializableCheck: false,
     }),
-  preloadedState: {
-    ...InitialState,
-    theme: localStorage.getItem("theme") || InitialState.theme,
-    layoutType: localStorage.getItem("layoutType") || InitialState.layoutType,
-  },
+  preloadedState: preloadState(),
   devTools: process.env.NODE_ENV !== "production",
 });
 
