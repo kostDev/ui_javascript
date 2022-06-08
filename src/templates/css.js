@@ -8,19 +8,31 @@ body {
 }
 
 #app {
-  background-color: rosybrown;
-  border-radius: 4px;
-  margin: 25% auto;
-  width: 100px;
-  height: 100px;
+\tdisplay: flex;
+  text-align: center;
+\theight: 100%;
 }
 
 #text {
-  color: white;
+  color: #4ed353;
   float: inline-start;
-  text-align: center;
   font-family: monospace;
-  font-size: 24px;
+  font-size: 32px;
+\tmargin: 25% auto;
+}
+
+#blink {
+  animation: blinker 1.5s step-start infinite;
+}
+
+#blink:after {
+  content: '|';
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
 }
 `;
 

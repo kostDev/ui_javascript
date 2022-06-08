@@ -14,6 +14,30 @@ export const THEMES = [
 ];
 
 export const LAYOUTS = ["4-Columns", "JS-Only"];
+export const NEW_LAYOUTS = {
+  "4-Columns": {
+    type: "4-Columns",
+    theme: "",
+    project: {
+      template: {},
+      files: {},
+    },
+  },
+  "JS-Only": {
+    type: "JS-Only",
+    theme: "",
+    project: {
+      template: {},
+      files: {},
+    },
+  },
+};
+export const PROJECT_STRUCTURE = {
+  theme: "",
+  layoutType: "",
+  files: {},
+  code: {},
+};
 
 export const TEMPLATES = {
   default: {

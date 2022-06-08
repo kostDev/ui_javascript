@@ -1,6 +1,24 @@
 import prittyObject from "./prittyObject";
 
 const maxConsoleOutput = 10;
+const setCurrentConsoleTime = () => {
+  const classes = "position-absolute pt-2 pe-2 top-0 end-0 fs-10 text-muted";
+  const date = new Date().toLocaleTimeString();
+  return `<span class="${classes}">${date}</span>`;
+};
+
+const logClass = (t) => {
+  switch (t) {
+    case "log":
+      return "alert-secondary";
+    case "error":
+      return "alert-danger";
+    case "warn":
+      return "alert-warning";
+    default:
+      return;
+  }
+};
 
 const receiveConsole = ({ data }) => {
   const { args, type } = data;
@@ -9,10 +27,6 @@ const receiveConsole = ({ data }) => {
     if (consoleUi) {
       const consoleOutput = consoleUi.children;
       const div = document.createElement("div");
-
-      // for (const el of consoleOutput) {
-      //   el.classList.add("opacity-25");
-      // }
       // clear old log
       if (consoleOutput.length > maxConsoleOutput) {
         const removeVal = consoleOutput.length - maxConsoleOutput;
@@ -28,10 +42,18 @@ const receiveConsole = ({ data }) => {
       } else {
         div.innerHTML = `<pre>${prittyObject(args)}</pre>`;
       }
-      // new Date().toLocaleTimeString()`;
-      div.classList.add("border-secondary", "position-relative");
+      div.innerHTML += setCurrentConsoleTime();
+      div.classList.add(
+        logClass(type),
+        "bsh-silver",
+        "border-secondary",
+        "position-relative",
+        "p-2",
+        "mb-2",
+        "rounded-1"
+      );
       consoleUi.prepend(div);
-      // console.log('here', args, type)
+      // console.log('here', type)
     }
   }
 };

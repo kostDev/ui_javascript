@@ -22,6 +22,9 @@ const InitialState = {
   templates: TEMPLATES,
   template: { ...TEMPLATES.default },
 
+  projects: {},
+  project: {},
+
   code: {}, // ...TEMPLATES.default ,
   statusCode: "stop",
   isCodeRun: false,

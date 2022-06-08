@@ -2,6 +2,7 @@ import { Col, Row } from "react-bootstrap";
 import Editor from "../Editor/Editor";
 
 import preScreenIcon from "../icons/prescreen.svg";
+// import undrawIcon from "../icons/undraw.svg";
 import playIcon from "../icons/play.svg";
 import stopIcon from "../icons/stop.svg";
 

@@ -21,6 +21,13 @@ body {
   height: 100% !important;
 }
 
+.bg-silver {
+  background: silver;
+}
+.bsh-silver {
+  box-shadow: 2px 2px 6px silver;
+}
+
 .h-10 {
   height: 10%;
 }
@@ -33,6 +40,10 @@ body {
 }
 .bg-54 {
   background: #545454;
+}
+
+.code-error {
+  color: red;
 }
 
 #runBtn {
