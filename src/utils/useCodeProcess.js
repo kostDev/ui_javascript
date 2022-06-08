@@ -31,7 +31,7 @@ function useCodeProcess(iframeRef) {
     doc.innerHTML = code.htmlmixed;
     styl.innerHTML = code.css;
     script.innerHTML = code.javascript;
-    script.type = "module";
+    // script.type = "module";
     consoleTrackScript.innerHTML = trackingConsole;
     // head
     doc.children[0].appendChild(styl);

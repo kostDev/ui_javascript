@@ -1,6 +1,7 @@
 const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="utf-8" />
   <title>Lite Page</title>
   <!-- your can add some scripts here -->
 </head>
