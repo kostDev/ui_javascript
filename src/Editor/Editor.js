@@ -7,30 +7,30 @@ function Editor({ mode }) {
   const dispatch = useDispatch();
   const theme = useSelector((state) => state.theme);
   const statusCode = useSelector((state) => state.statusCode);
-  const template = useSelector((state) => state.code[mode]);
-  const [tempCode, setTempCode] = useState(template);
+  const code = useSelector((state) => state.code[mode]);
+  const [tempCode, setTempCode] = useState(code);
 
-  const saveCode = (editor, _, value) => {
-    setTempCode(value);
+  const saveCode = (editor, _, newCode) => {
+    setTempCode(newCode);
+    dispatch(setCode(newCode, mode));
   };
   const onFocus = (editor) => editor.setOption("styleActiveLine", true);
   const onBlur = (editor) => editor.setOption("styleActiveLine", false);
 
-  useEffect(() => {
-    if (statusCode === "run" || statusCode === "refresh") {
-      dispatch(setCode(tempCode, mode));
-    }
-  }, [statusCode]);
+  // useEffect(() => {
+  //   if(statusCode === 'save' || statusCode === 'run') {
+  //     dispatch(setCode(tempCode, mode));
+  //   }
+  // }, [statusCode]);
 
-  useEffect(() => {
-    //console.log('save', mode);
-    setTempCode(tempCode);
-  }, [template]);
+  // useEffect(() => {
+  //   setTempCode(tempCode);
+  // }, [template]);
 
   return (
     <ControlledEditor
       className="h-100 w-100"
-      value={template}
+      value={code}
       autoCursor={false}
       options={{
         theme,

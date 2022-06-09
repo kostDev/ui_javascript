@@ -7,7 +7,7 @@ import {
   EDITOR_RUN_CODE_STATUS,
   EDITOR_STOP_CODE_STATUS,
   EDITOR_REFRESH_CODE_STATUS,
-  LAYOUT_SET,
+  LAYOUT_SET, EDITOR_SAVE_CODE_STATUS,
 } from "./Actions";
 
 import { LAYOUTS, TEMPLATES, THEMES } from "../consts";
@@ -62,6 +62,10 @@ const rootReducer = produce((draftState = InitialState, { type, payload }) => {
       } else {
         draftState.statusCode = "run";
       }
+      return draftState;
+    case EDITOR_SAVE_CODE_STATUS:
+      draftState.isCodeRun = payload.isCodeRun;
+      draftState.statusCode = "save";
       return draftState;
     case EDITOR_REFRESH_CODE_STATUS:
       draftState.isCodeRun = true;

@@ -2,22 +2,15 @@ import { Col, Row } from "react-bootstrap";
 import Editor from "../Editor/Editor";
 
 import preScreenIcon from "../icons/prescreen.svg";
-// import undrawIcon from "../icons/undraw.svg";
-import playIcon from "../icons/play.svg";
-import stopIcon from "../icons/stop.svg";
 
-import { useDispatch, useSelector } from "react-redux";
-import { runCodeStatus, stopCodeStatus } from "../Store/Actions";
+import { useSelector } from "react-redux";
 
 function LayoutFourColumns({ frameRef }) {
-  const dispatch = useDispatch();
-  const runCode = () => dispatch(runCodeStatus());
-  const stopCode = () => dispatch(stopCodeStatus());
   const isRun = useSelector((state) => state.isCodeRun);
 
   return (
     <>
-      <Row className="vw-100 h-95">
+      <Row className="vw-100 h-95 m-0">
         <Col
           className=" h-50 position-relative bg-dark p-0 border-dark border-end border-bottom"
           md={6}
@@ -51,19 +44,6 @@ function LayoutFourColumns({ frameRef }) {
           md={6}
         >
           <Editor mode="javascript" />
-          <div
-            className="d-flex position-absolute w-auto p-1 top-0 end-0 justify-content-end"
-            id="runBtn"
-          >
-            <span className="mt-2 me-3" onClick={runCode}>
-              <img alt="run code" width="24px" src={playIcon} />
-            </span>
-            {isRun && (
-              <span className="mt-2 me-2" onClick={stopCode}>
-                <img alt="stop code" width="24px" src={stopIcon} />
-              </span>
-            )}
-          </div>
         </Col>
       </Row>
     </>

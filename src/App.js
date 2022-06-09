@@ -22,11 +22,10 @@ import "codemirror/theme/material-ocean.css";
 import "codemirror/theme/panda-syntax.css";
 import "codemirror/theme/mbo.css";
 
-import Layout from "./Layouts/Layout";
-import EditorThemeChanger from "./Editor/EditorThemeChanger";
-import LayoutChanger from "./Layouts/LayoutChanger";
-
 import receiveConsole from "./utils/receiveConsole";
+
+import Header from "./Header/Header";
+import Layout from "./Layouts/Layout";
 
 export default function App() {
   useEffect(() => {
@@ -35,10 +34,7 @@ export default function App() {
 
   return (
     <Container className="App vh-100 p-0" fluid>
-      <header className="row justify-content-between py-1 m-0 bg-b1 text-white border-bottom border-secondary">
-        <LayoutChanger />
-        <EditorThemeChanger />
-      </header>
+      <Header />
       <Layout />
     </Container>
   );

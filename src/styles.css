@@ -4,13 +4,9 @@ body {
 
   width: 100vw;
   height: 100vh;
-
-  background: #1b1b1b;
-  background-image: linear-gradient(
-      rgba(101, 96, 102, 0.2) 0.1em,
-      transparent 0.1em
-    ),
+  background: linear-gradient(rgba(101, 96, 102, 0.2) 0.1em, transparent 0.1em),
     linear-gradient(90deg, rgba(31, 143, 177, 0.2) 0.1em, transparent 0.1em);
+  background-color: #1b1b1b;
   background-size: 32px 32px;
 }
 
@@ -47,10 +43,6 @@ body {
 }
 .c-pointer {
   cursor: pointer;
-}
-
-.code-error {
-  color: red;
 }
 
 .gutter-horizontal {

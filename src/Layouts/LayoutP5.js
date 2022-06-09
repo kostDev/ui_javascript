@@ -1,21 +1,18 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { runCodeStatus, stopCodeStatus } from "../Store/Actions";
+import { useSelector } from "react-redux";
 
 import Editor from "../Editor/Editor";
 import Split from "react-split";
 
 import preScreenIcon from "../icons/prescreen.svg";
-import saveIcon from "../icons/save.svg";
-import playIcon from "../icons/play.svg";
-import stopIcon from "../icons/stop.svg";
 
 function LayoutP5({ frameRef }) {
-  const dispatch = useDispatch();
-  const runCode = () => dispatch(runCodeStatus());
-  const stopCode = () => dispatch(stopCodeStatus());
   const isRun = useSelector((state) => state.isCodeRun);
-  const [isBottomHtml, setBottomHtml] = useState(true);
+  const [isHtml, setBottomHtml] = useState(true);
+
+  const switchUI = (status) => {
+    setBottomHtml(status);
+  }
 
   return (
     <>
@@ -60,25 +57,9 @@ function LayoutP5({ frameRef }) {
         >
           <div className="position-relative">
             <Editor mode="javascript" />
-            <div
-              className="d-flex position-absolute w-auto p-1 top-0 end-0 justify-content-end"
-              id="runBtn"
-            >
-              <span className="mt-2 me-3" onClick={() => console.log("save")}>
-                <img alt="save code" width="24px" src={saveIcon} />
-              </span>
-              <span className="mt-2 me-3" onClick={runCode}>
-                <img alt="run code" width="24px" src={playIcon} />
-              </span>
-              {isRun && (
-                <span className="mt-2 me-2" onClick={stopCode}>
-                  <img alt="stop code" width="24px" src={stopIcon} />
-                </span>
-              )}
-            </div>
           </div>
           <div className="position-relative bg-dark p-0">
-            <Editor mode={isBottomHtml ? "htmlmixed" : "css"} />
+            <Editor mode={isHtml ? "htmlmixed" : "css"} />
             <div className="position-absolute p-1 top-0 end-0">
               <div
                 className="btn-group"
@@ -88,18 +69,18 @@ function LayoutP5({ frameRef }) {
                 <button
                   className={
                     "btn btn-outline-secondary empty-focus " +
-                    (isBottomHtml && "active")
+                    (isHtml && "active")
                   }
-                  onClick={() => setBottomHtml(true)}
+                  onClick={() => switchUI(true)}
                 >
                   html
                 </button>
                 <button
                   className={
                     "btn btn-outline-secondary empty-focus " +
-                    (!isBottomHtml && "active")
+                    (!isHtml && "active")
                   }
-                  onClick={() => setBottomHtml(false)}
+                  onClick={() => switchUI(false)}
                 >
                   css
                 </button>
