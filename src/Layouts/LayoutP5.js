@@ -23,7 +23,6 @@ function LayoutP5({ frameRef }) {
         className="d-flex flex-row vw-100 h-95 m-0 p-0 overflow-hidden"
         sizes={[50, 50]}
         minSize={250}
-        // expandToMin={false}
         gutterSize={5}
         snapOffset={1}
         dragInterval={1}
@@ -65,22 +64,20 @@ function LayoutP5({ frameRef }) {
               className="d-flex position-absolute w-auto p-1 top-0 end-0 justify-content-end"
               id="runBtn"
             >
-            <span className="mt-2 me-3" onClick={() => console.log('save')}>
-              <img alt="save code" width="24px" src={saveIcon} />
-            </span>
+              <span className="mt-2 me-3" onClick={() => console.log("save")}>
+                <img alt="save code" width="24px" src={saveIcon} />
+              </span>
               <span className="mt-2 me-3" onClick={runCode}>
-              <img alt="run code" width="24px" src={playIcon} />
-            </span>
+                <img alt="run code" width="24px" src={playIcon} />
+              </span>
               {isRun && (
                 <span className="mt-2 me-2" onClick={stopCode}>
-                <img alt="stop code" width="24px" src={stopIcon} />
-              </span>
+                  <img alt="stop code" width="24px" src={stopIcon} />
+                </span>
               )}
             </div>
           </div>
-          <div
-            className="position-relative bg-dark p-0"
-          >
+          <div className="position-relative bg-dark p-0">
             <Editor mode={isBottomHtml ? "htmlmixed" : "css"} />
             <div className="position-absolute p-1 top-0 end-0">
               <div
