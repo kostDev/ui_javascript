@@ -17,6 +17,7 @@ body {
 .App {
   font-family: sans-serif;
 }
+
 .CodeMirror {
   height: 100% !important;
 }
@@ -41,12 +42,25 @@ body {
 .bg-54 {
   background: #545454;
 }
+.bg-b1 {
+  background: #1b1b1b;
+}
 .c-pointer {
   cursor: pointer;
 }
 
 .code-error {
   color: red;
+}
+
+.gutter-horizontal {
+  background: silver;
+  cursor: col-resize;
+}
+
+.gutter-vertical {
+  background: silver;
+  cursor: row-resize;
 }
 
 #runBtn {

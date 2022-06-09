@@ -15,8 +15,10 @@ export const THEMES = [
 
 export const LAYOUTS = ["4-Columns", "JS-Only", "p5"];
 export const PROJECT_STRUCTURE = {
+  name: "",
   theme: "",
   layoutType: "",
+  template: {},
   files: {},
   code: {},
 };

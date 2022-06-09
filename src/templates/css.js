@@ -37,7 +37,6 @@ body {
 `;
 
 export const cssP5 = `html, body {
-  background: black;
   margin: 0;
   padding: 0;
   width: 100%;
@@ -45,8 +44,7 @@ export const cssP5 = `html, body {
 }
 canvas {
   display: block;
-  margin: 1rem;
-  float: right;
+  margin: 1rem auto;
 }`;
 
 export default css;

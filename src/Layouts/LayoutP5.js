@@ -1,14 +1,14 @@
-import { Col, Row } from "react-bootstrap";
-import Editor from "../Editor/Editor";
-
-import preScreenIcon from "../icons/prescreen.svg";
-// import undrawIcon from "../icons/undraw.svg";
-import playIcon from "../icons/play.svg";
-import stopIcon from "../icons/stop.svg";
-
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { runCodeStatus, stopCodeStatus } from "../Store/Actions";
-import { useState } from "react";
+
+import Editor from "../Editor/Editor";
+import Split from "react-split";
+
+import preScreenIcon from "../icons/prescreen.svg";
+import saveIcon from "../icons/save.svg";
+import playIcon from "../icons/play.svg";
+import stopIcon from "../icons/stop.svg";
 
 function LayoutP5({ frameRef }) {
   const dispatch = useDispatch();
@@ -19,12 +19,19 @@ function LayoutP5({ frameRef }) {
 
   return (
     <>
-      <Row className="vw-100 h-95 overflow-hidden">
-        <Col
-          className=" h-100 position-relative bg-dark p-0 border-dark border-end border-bottom"
-          md={6}
-        >
-          <div className="text-dark w-100 h-100" id="runDemo">
+      <Split
+        className="d-flex flex-row vw-100 h-95 m-0 p-0 overflow-hidden"
+        sizes={[50, 50]}
+        minSize={250}
+        // expandToMin={false}
+        gutterSize={5}
+        snapOffset={1}
+        dragInterval={1}
+        direction="horizontal"
+        cursor="col-resize"
+      >
+        <div className="position-relative h-100 bg-secondary">
+          <div className="w-100 h-100" id="runDemo">
             <iframe
               ref={frameRef}
               id="codeFrame"
@@ -41,28 +48,38 @@ function LayoutP5({ frameRef }) {
               src={preScreenIcon}
             />
           )}
-        </Col>
-        <Col
-          className="h-50 position-relative bg-white p-0 align-self-start"
-          md={6}
+        </div>
+        <Split
+          className="position-relative h-100 bg-dark"
+          sizes={[55, 45]}
+          minSize={150}
+          gutterSize={5}
+          snapOffset={1}
+          dragInterval={1}
+          direction="vertical"
+          cursor="row-resize"
         >
-          <Editor mode="javascript" />
-          <div
-            className="d-flex position-absolute w-auto p-1 top-0 end-0 justify-content-end"
-            id="runBtn"
-          >
-            <span className="mt-2 me-3" onClick={runCode}>
+          <div className="position-relative">
+            <Editor mode="javascript" />
+            <div
+              className="d-flex position-absolute w-auto p-1 top-0 end-0 justify-content-end"
+              id="runBtn"
+            >
+            <span className="mt-2 me-3" onClick={() => console.log('save')}>
+              <img alt="save code" width="24px" src={saveIcon} />
+            </span>
+              <span className="mt-2 me-3" onClick={runCode}>
               <img alt="run code" width="24px" src={playIcon} />
             </span>
-            {isRun && (
-              <span className="mt-2 me-2" onClick={stopCode}>
+              {isRun && (
+                <span className="mt-2 me-2" onClick={stopCode}>
                 <img alt="stop code" width="24px" src={stopIcon} />
               </span>
-            )}
+              )}
+            </div>
           </div>
-          <Col
-            className="h-100 w-100 position-relative bg-dark p-0 border-dark border-top col-auto"
-            md={6}
+          <div
+            className="position-relative bg-dark p-0"
           >
             <Editor mode={isBottomHtml ? "htmlmixed" : "css"} />
             <div className="position-absolute p-1 top-0 end-0">
@@ -91,9 +108,9 @@ function LayoutP5({ frameRef }) {
                 </button>
               </div>
             </div>
-          </Col>
-        </Col>
-      </Row>
+          </div>
+        </Split>
+      </Split>
     </>
   );
 }

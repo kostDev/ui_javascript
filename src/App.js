@@ -34,8 +34,8 @@ export default function App() {
   }, [window]);
 
   return (
-    <Container className="App vh-100" fluid>
-      <header className="row justify-content-between p-1 bg-dark text-white border-bottom border-secondary">
+    <Container className="App vh-100 p-0" fluid>
+      <header className="row justify-content-between py-1 m-0 bg-b1 text-white border-bottom border-secondary">
         <LayoutChanger />
         <EditorThemeChanger />
       </header>
