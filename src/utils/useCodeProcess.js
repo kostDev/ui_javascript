@@ -64,7 +64,7 @@ function useCodeProcess(iframeRef) {
     } else if (statusCode === "stop") {
       stopCode();
     }
-  }, [code, statusCode, layoutType]);
+  }, [statusCode, layoutType]);
 }
 
 export default useCodeProcess;
