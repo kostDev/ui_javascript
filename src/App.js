@@ -33,7 +33,7 @@ export default function App() {
   }, [window]);
 
   return (
-    <Container className="App vh-100 p-0" fluid>
+    <Container className="App vh-100 p-0 overflow-hidden" fluid>
       <Header />
       <Layout />
     </Container>

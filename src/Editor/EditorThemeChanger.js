@@ -8,16 +8,16 @@ function EditorThemeChanger() {
   const themes = useSelector((state) => state.themes);
   const theme = useSelector((state) => state.theme);
   const updateTheme = (value) => dispatch(setTheme(value));
-  //position-absolute top-0 end-0
+
   return (
-    <Dropdown className="w-auto">
+    <Dropdown className="w-50 mb-3">
       <Dropdown.Toggle
         variant="outline-secondary"
-        className="bg-none empty-focus border-0"
+        className="w-100 empty-focus text-center"
       >
-        theme: {theme}
+        {theme}
       </Dropdown.Toggle>
-      <Dropdown.Menu variant="dark">
+      <Dropdown.Menu variant="dark" align="end">
         {themes.map((themeName) => (
           <Dropdown.Item
             key={"theme-" + themeName}

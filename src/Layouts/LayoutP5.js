@@ -12,7 +12,7 @@ function LayoutP5({ frameRef }) {
 
   const switchUI = (status) => {
     setBottomHtml(status);
-  }
+  };
 
   return (
     <>
