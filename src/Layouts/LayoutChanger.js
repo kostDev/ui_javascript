@@ -9,14 +9,14 @@ function LayoutChanger() {
   const updateLayout = (layout) => dispatch(setLayout(layout));
   return (
     <>
-      <Dropdown className="w-auto">
+      <Dropdown className="w-50">
         <Dropdown.Toggle
           variant="outline-secondary"
-          className="bg-none empty-focus border-0"
+          className="w-100 empty-focus text-center"
         >
-          layout: {layoutType}
+          {layoutType}
         </Dropdown.Toggle>
-        <Dropdown.Menu variant="dark">
+        <Dropdown.Menu variant="dark" align="end">
           {layouts.map((layout) => (
             <Dropdown.Item
               key={"layout-" + layout}

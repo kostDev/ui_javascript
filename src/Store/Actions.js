@@ -35,7 +35,7 @@ export const refreshCodeStatus = () => ({
 
 export const saveCodeStatus = (isCodeRun = false) => ({
   type: EDITOR_SAVE_CODE_STATUS,
-  payload: { isCodeRun }
+  payload: { isCodeRun },
 });
 
 export const setLayout = (layout) => ({

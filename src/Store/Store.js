@@ -7,7 +7,8 @@ import {
   EDITOR_RUN_CODE_STATUS,
   EDITOR_STOP_CODE_STATUS,
   EDITOR_REFRESH_CODE_STATUS,
-  LAYOUT_SET, EDITOR_SAVE_CODE_STATUS,
+  LAYOUT_SET,
+  EDITOR_SAVE_CODE_STATUS,
 } from "./Actions";
 
 import { LAYOUTS, TEMPLATES, THEMES } from "../consts";
@@ -28,6 +29,7 @@ const InitialState = {
   code: {}, // ...TEMPLATES.default ,
   statusCode: "stop",
   isCodeRun: false,
+  lineNumbers: true,
 };
 
 const preloadState = () => {

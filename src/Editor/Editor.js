@@ -1,4 +1,4 @@
-import { memo, useEffect, useState } from "react";
+import { memo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { UnControlled as ControlledEditor } from "react-codemirror2";
 import { setCode } from "../Store/Actions";
@@ -6,9 +6,9 @@ import { setCode } from "../Store/Actions";
 function Editor({ mode }) {
   const dispatch = useDispatch();
   const theme = useSelector((state) => state.theme);
-  const statusCode = useSelector((state) => state.statusCode);
+  const lineNumbers = useSelector((state) => state.lineNumbers);
   const code = useSelector((state) => state.code[mode]);
-  const [tempCode, setTempCode] = useState(code);
+  const [_, setTempCode] = useState(code);
 
   const saveCode = (editor, _, newCode) => {
     setTempCode(newCode);
@@ -16,16 +16,6 @@ function Editor({ mode }) {
   };
   const onFocus = (editor) => editor.setOption("styleActiveLine", true);
   const onBlur = (editor) => editor.setOption("styleActiveLine", false);
-
-  // useEffect(() => {
-  //   if(statusCode === 'save' || statusCode === 'run') {
-  //     dispatch(setCode(tempCode, mode));
-  //   }
-  // }, [statusCode]);
-
-  // useEffect(() => {
-  //   setTempCode(tempCode);
-  // }, [template]);
 
   return (
     <ControlledEditor
@@ -39,7 +29,7 @@ function Editor({ mode }) {
         mode,
         showCursorWhenSelecting: true,
         styleActiveLine: false,
-        lineNumbers: true,
+        lineNumbers,
         indentWithTabs: true,
         // lineWrapping: true,
         keyMap: "sublime",
